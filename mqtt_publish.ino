@@ -11,7 +11,7 @@
 
 // AskSensors MQTT user config
 
-const char* pubTopic = "publish/.................."; // API KEY IN
+const char* pubTopic = "publish/.................."; // TODO: add the API KEY IN
 const char* mqtt_server = "asksensors.com";
 unsigned int mqtt_port = 1883;
 
@@ -21,7 +21,7 @@ unsigned int mqtt_port = 1883;
 // Newer Ethernet shields have a MAC address printed on a sticker on the shield
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 // Set the static IP address to use if the DHCP fails to assign
-IPAddress ip(192, 168, 1, 177);
+IPAddress ip(..., ..., ..., ...); // TODO: Add the IP address
 
 EthernetClient askClient;
 PubSubClient client(askClient);
