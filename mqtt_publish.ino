@@ -11,8 +11,6 @@
 
 // AskSensors MQTT user config
 
-const char* ssid = ".................."; // Wifi SSID
-const char* password = ".................."; // Wifi Password
 const char* pubTopic = "publish/.................."; // API KEY IN
 const char* mqtt_server = "asksensors.com";
 unsigned int mqtt_port = 1883;
