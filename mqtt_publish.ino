@@ -9,14 +9,15 @@
 #include <Ethernet.h>
 #include <PubSubClient.h>
 
-// AskSensors MQTT user config
+// TODO: Ethernet MQTT user config
+const char* pubTopic = "publish/.................."; // API KEY IN
+const unsigned int writeInterval = 25000;   // write interval (in ms)
 
-const char* pubTopic = "publish/.................."; // TODO: add the API KEY IN
-const char* mqtt_server = "asksensors.com";
+//AskSensors MQTT config
+const char* mqtt_server = "mqtt.asksensors.com";
 unsigned int mqtt_port = 1883;
 
 // ETHERNET config.
-
 // Enter a MAC address for your controller below.
 // Newer Ethernet shields have a MAC address printed on a sticker on the shield
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
@@ -58,7 +59,7 @@ void loop() {
   Serial.println("********** End ");
   Serial.println("*****************************************************");
   
- delay(25000);// delay
+ delay(writeInterval);// delay
 }
 
 
