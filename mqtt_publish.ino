@@ -10,7 +10,8 @@
 #include <PubSubClient.h>
 
 // TODO: Ethernet MQTT user config
-const char* pubTopic = "publish/.................."; // API KEY IN
+const char* username = "................."; // my AskSensors username
+const char* pubTopic = "................../.................."; // username/apiKeyIn
 const unsigned int writeInterval = 25000;   // write interval (in ms)
 
 //AskSensors MQTT config
@@ -77,11 +78,8 @@ void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
     Serial.print("********** Attempting MQTT connection...");
-    // Create a random client ID
-    String clientId = "ethClient-";
-    clientId += String(random(0xffff), HEX);
     // Attempt to connect
-    if (client.connect(clientId.c_str())) {
+   if (client.connect("ethClient", username, "")) { 
       Serial.println("-> MQTT client connected");
     } else {
       Serial.print("failed, rc=");
