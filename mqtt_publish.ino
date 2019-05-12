@@ -13,21 +13,20 @@
 const char* username = "................."; // my AskSensors username
 const char* pubTopic = "................../.................."; // username/apiKeyIn
 const unsigned int writeInterval = 25000;   // write interval (in ms)
+// Set the static IP address to use if the DHCP fails to assign
+IPAddress ip(..., ..., ..., ...); // TODO: Add the IP address
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED }; //MAC address
+// Newer Ethernet shields have a MAC address printed on a sticker on the shield
 
 //AskSensors MQTT config
 const char* mqtt_server = "mqtt.asksensors.com";
 unsigned int mqtt_port = 1883;
 
-// ETHERNET config.
-// Enter a MAC address for your controller below.
-// Newer Ethernet shields have a MAC address printed on a sticker on the shield
-byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-// Set the static IP address to use if the DHCP fails to assign
-IPAddress ip(..., ..., ..., ...); // TODO: Add the IP address
-
+// MQTT client
 EthernetClient askClient;
 PubSubClient client(askClient);
 
+// Setup
 void setup() {
   Serial.begin(115200);
   Serial.println("*****************************************************");
@@ -45,6 +44,7 @@ void setup() {
   client.setCallback(callback);
 }
 
+//Loop
 void loop() {
 
   if (!client.connected()) 
@@ -52,7 +52,7 @@ void loop() {
   client.loop();
   Serial.println("********** Publish MQTT data to ASKSENSORS");
   char mqtt_payload[30] = "";
-  snprintf (mqtt_payload, 30, "module1=%ld", random(10,100));
+   snprintf (mqtt_payload, 30, "m1=%ld&m2=%ld", random(10,100), random(10,100));
   Serial.print("Publish message: ");
   Serial.println(mqtt_payload);
   client.publish(pubTopic, mqtt_payload);
