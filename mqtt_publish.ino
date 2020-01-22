@@ -11,7 +11,7 @@
 
 // TODO: Ethernet MQTT user config
 const char* username = "................."; // my AskSensors username
-const char* pubTopic = "................../.................."; // username/apiKeyIn
+const char* pubTopic = "publish/..../....."; // publish/username/apiKeyIn
 const unsigned int writeInterval = 25000;   // write interval (in ms)
 // Set the static IP address to use if the DHCP fails to assign
 IPAddress ip(..., ..., ..., ...); // TODO: Add the IP address
